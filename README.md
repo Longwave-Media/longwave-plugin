@@ -55,15 +55,50 @@ A conformant client follows that, registers itself, opens a browser, and the cre
 approves. PKCE S256 is required. This is deliberate: Agent Plugins v1.0.0 §7.2.1 forbids embedding
 secrets in `headers`, and OAuth discovery is how the spec expects authorization to work.
 
-## What the agent can do
+## Tools
 
-Create Shorts from a long-form episode, poll progress, list what was made, publish (with scheduling),
-create supercuts, reschedule a queued post, publish a thumbnail, and read channel insights, content
-analysis, connected channels, playlists, episodes and the thumbnail style catalogue.
+Fifteen tools — enough to run a creator's clip pipeline end to end, and deliberately no more. The
+surface is a **deny-by-default allowlist** (`lib/mcp/manifest.ts` in the dashboard repo), not a
+mirror of the API, so a tool exists here because it has an ownership-checked backing route.
+
+**Create and inspect** — granted on first connect
+
+| Tool | Does |
+|---|---|
+| `account_status` | Channel connected? Credits left? Call this first. |
+| `create_shorts_job` | Cut a long-form episode into Shorts. Free — credits are spent on publish. |
+| `get_job` | Progress, clip count and errors for a job. |
+| `list_clips` | What was produced, with per-platform status and live URLs. |
+| `create_supercut` | Assemble one longer cut from a source video or from existing clips. |
+
+**Read** — granted on first connect
+
+| Tool | Does |
+|---|---|
+| `list_episodes` | The creator's long-form catalogue, newest first, with status. |
+| `get_episode` | One episode in full: titles, notes, chapters, transcript, podcast state. |
+| `get_insights` | Channel-level summary: episode counts, recurring topics, hook types. |
+| `get_content_intelligence` | Longwave's written analysis of what to make next. |
+| `get_channel_overview` | Connected platforms and how each is performing. |
+| `list_playlists` | Playlists, and which one is the upload destination. |
+| `list_thumbnail_styles` | The thumbnail style catalogue. |
+
+**Change something public** — a separate approval, every time
+
+| Tool | Does |
+|---|---|
+| `publish_shorts` | Publish Shorts to YouTube, with scheduling. |
+| `reschedule_post` | Move a queued post to a different hour, or unschedule it. |
+| `approve_thumbnail` | Publish an AI-generated thumbnail on the episode. |
 
 Publishing and thumbnail changes are **not** granted on first connect — they are a step-up the creator
 approves separately, because both change something public. The server asks for the extra permission
-with `403` + `WWW-Authenticate: ... error="insufficient_scope"`.
+with `403` + `WWW-Authenticate: ... error="insufficient_scope"`. `tools/list` returns the whole
+catalogue regardless of grant, so a client can see what is available and ask for it; the grant is
+enforced on the call.
+
+The MCP endpoint's `tools/list` is **authoritative** — it carries each tool's full JSON Schema. The
+tables above are a convenience for someone reading this repo.
 
 Credits are charged to the creator **per Short that actually publishes**. The agent never handles
 payment; when the balance is low the tool returns a top-up link.
