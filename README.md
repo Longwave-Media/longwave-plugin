@@ -1,99 +1,107 @@
-# Longwave agent plugin
+# Longwave — agent plugin
 
-The distributable package that lets an agent (Grok Bot, Grok Build, Cursor, Claude Code) cut
-long-form episodes into YouTube Shorts and publish them through the creator's own Longwave
-connection.
+Lets an agent (Grok Bot, Grok Build, Cursor, Claude Code, Muse) turn a creator's long-form episodes
+into YouTube Shorts and publish them to that creator's **own** channel.
 
-**Agents orchestrate. Longwave publishes.** The agent never downloads video and never drives
-YouTube Studio; Longwave holds the creator's YouTube authorization on its own servers.
+**Agents orchestrate. Longwave renders and publishes.** The agent never downloads video, never holds
+Google credentials, and never drives YouTube Studio. Longwave holds the creator's YouTube
+authorization on its own servers.
 
-## Layout
+## Layout — both plugin conventions are shipped
+
+Two ecosystems describe plugin packages differently, and a client that finds no MCP config installs a
+plugin with **zero tools**. Both layouts are therefore present:
+
+| Path | Convention |
+|---|---|
+| `plugin.json` | [Agent Plugins v1.0.0](https://agent-plugins.org/specification) — closed schema, fixed location |
+| `mcp.json` | Agent Plugins v1.0.0 — transport `streamable-http` |
+| `.grok-plugin/plugin.json` | Grok / xAI marketplace — verified against xAI's own vendored `external_plugins/neon` and third-party `getsentry/plugin-grok` |
+| `.mcp.json` | Grok MCP config — transport `http` |
+| `skills/longwave/SKILL.md` | Shared by both — the instructions the model reads |
+| `.grok-plugin/marketplace.json` | Self-hosted catalog (tracks repo HEAD) |
+| `assets/logo.svg` | Listing logo — the Groundswell mark, monochrome `currentColor` per brand canon |
+
+The dashboard repo's `scripts/verify-plugin-package.ts` asserts that both manifests declare the same
+name and author, and that both MCP configs point at the **same endpoint** — otherwise one loader
+silently talks to the wrong place.
+
+## Install
 
 ```
-longwave/
-├── plugin.json                        # Agent Plugins v1.0.0 manifest (closed schema)
-├── mcp.json                           # fixed discovery location — the MCP server declaration
-├── skills/
-│   └── longwave/SKILL.md              # what the model reads to decide when and how to act
-├── .grok-plugin/marketplace.json      # self-hosted Grok catalog (tracks repo HEAD)
-└── README.md
+grok plugin install Longwave-Media/longwave-grok-plugin
 ```
 
-`plugin.json` and `mcp.json` are **fixed locations** — neither can be renamed or inlined. Both are
-validated against the [Agent Plugins v1.0.0 schema](https://agent-plugins.org/specification).
+Or add it as a self-hosted marketplace source:
 
-## Before this package works, three things must be true
-
-1. **This directory must be mirrored to a public repository under the company org.** The repo URL
-   in `plugin.json`, `.grok-plugin/marketplace.json`, and the marketplace PR must all point at it.
-   xAI rejects personal-fork sources for branded plugins as possible impersonation.
-2. **`https://www.longwave.media/api/mcp` must be serving** the MCP endpoint (it is), with the
-   OAuth 2.1 authorization server reachable at `/.well-known/oauth-authorization-server`.
-3. **The `/.well-known/*` rewrites must be live in production.** They are configured in
-   `next.config.mjs` but were never observed working on the dev server — see
-   `docs/specs/AGENT_MCP_GATEWAY_SPEC.md` §5.7. If they 404, OAuth discovery fails and no connector
-   can install.
-
-## No credentials in this package
-
-`mcp.json` declares the server and **nothing else**. Deliberately:
-
-> "Header values are visible package data, not a portable secret mechanism. Plugins MUST NOT embed
-> credentials or other secrets in `headers`." — Agent Plugins v1.0.0 §7.2.1
-
-Authorization is client-managed OAuth discovery: an unauthenticated call to `/api/mcp` returns
-`401` with `WWW-Authenticate: Bearer resource_metadata="…"`, and the client runs the browser consent
-flow from there. There is no API key to paste, which is the point.
-
-## Distribution — three paths, two with no review
-
-| Path | Command | Review |
-|---|---|---|
-| Direct install | `grok plugin install Longwave-Media/longwave-grok-plugin` | none |
-| Self-hosted catalog | `grok plugin marketplace add Longwave-Media/longwave-grok-plugin` | none |
-| Official xAI catalog | PR to `xai-org/plugin-marketplace` | code-owner review |
-
-### Submitting to the official catalog
-
-Add one entry to `xai-org/plugin-marketplace`'s `.grok-plugin/marketplace.json` `plugins` array,
-with the `source.sha` pinned to a **full 40-character commit SHA** (a moving ref would let a
-force-push ship new code silently, which is why xAI requires the pin):
-
-```json
-{
-  "name": "longwave",
-  "description": "Turn long-form episodes into Shorts and publish them to the creator's own YouTube channel.",
-  "category": "productivity",
-  "source": {
-    "source": "url",
-    "url": "https://github.com/Longwave-Media/longwave-grok-plugin.git",
-    "sha": "<40-char-commit-sha>"
-  },
-  "homepage": "https://www.longwave.media",
-  "keywords": ["longwave", "youtube shorts", "shorts from podcast", "publish to youtube"],
-  "domains": ["longwave.media", "www.longwave.media"]
-}
+```
+grok plugin marketplace add Longwave-Media/longwave-grok-plugin
 ```
 
-Then regenerate their index and validate:
+Both work with **no review**. Cursor and Claude Code read the same files; Muse builds its own client
+from the MCP URL.
+
+## Authentication
+
+Nothing to configure, and **no credentials live in this repo.** An unauthenticated call to
+`https://www.longwave.media/api/mcp` returns:
+
+```
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Bearer resource_metadata="https://www.longwave.media/.well-known/oauth-protected-resource"
+```
+
+A conformant client follows that, registers itself, opens a browser, and the creator signs in and
+approves. PKCE S256 is required. This is deliberate: Agent Plugins v1.0.0 §7.2.1 forbids embedding
+secrets in `headers`, and OAuth discovery is how the spec expects authorization to work.
+
+## What the agent can do
+
+Create Shorts from a long-form episode, poll progress, list what was made, publish (with scheduling),
+create supercuts, reschedule a queued post, publish a thumbnail, and read channel insights, content
+analysis, connected channels, playlists, episodes and the thumbnail style catalogue.
+
+Publishing and thumbnail changes are **not** granted on first connect — they are a step-up the creator
+approves separately, because both change something public. The server asks for the extra permission
+with `403` + `WWW-Authenticate: ... error="insufficient_scope"`.
+
+Credits are charged to the creator **per Short that actually publishes**. The agent never handles
+payment; when the balance is low the tool returns a top-up link.
+
+## Submitting to the official xAI catalog
+
+Entries live in [`xai-org/plugin-marketplace`](https://github.com/xai-org/plugin-marketplace), where
+the source must be **SHA-pinned to a full 40-character lowercase commit** — `scripts/validate-catalog.py`
+enforces that, and Grok re-verifies `git rev-parse HEAD == sha` after cloning, so a force-push cannot
+silently ship new code. xAI also expects the source to be an **organisation** repository; ours is
+`Longwave-Media`.
+
+Get the commit to pin:
+
+```bash
+git ls-remote https://github.com/Longwave-Media/longwave-grok-plugin.git HEAD
+```
+
+Then add the entry, regenerate the component index, validate, and open a PR:
 
 ```bash
 python3 scripts/generate-plugin-index.py
 python3 scripts/validate-catalog.py
-python3 scripts/generate-plugin-index.py --check
 ```
 
-**To roll out an update**, bump the pinned `sha` in that same entry — never open a parallel entry.
+**Re-pin `sha` on every release** — never open a parallel entry.
 
-**Keep `keywords` specific.** They drive Grok's plugin CTA; generic terms (`ai`, `cli`, `workflow`)
-get pushed back because they mis-fire on unrelated requests.
+## Privacy and data
 
-## Muse and other MCP clients
+This package collects nothing and stores nothing. Anything the creator acts on is handled by the
+hosted Longwave service under its own terms: <https://www.longwave.media/terms> and
+<https://www.longwave.media/privacy>. YouTube credentials never leave Longwave's servers, and the
+agent receives only an opaque Longwave token.
 
-Muse has no connector submission process, so there is nothing to submit. Any user can connect by
-handing their Muse a public MCP URL. The paste-ready prompt is in
-`docs/reference/AGENT_INTEGRATION.md`.
+## Support
+
+`support@longwave.media` · <https://www.longwave.media>
 
 ## License
 
-The plugin package is MIT. That does **not** cover the hosted Longwave service.
+MIT for this package. That does **not** cover the hosted Longwave service.

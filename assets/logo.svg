@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 64" role="img" aria-label="Longwave">
+  <path d="M0,32 Q80,2 160,32 L160,64 L0,64 Z" fill="currentColor" opacity="0.22"/>
+  <path d="M0,43 Q80,17 160,43 L160,64 L0,64 Z" fill="currentColor" opacity="0.5"/>
+  <path d="M0,54 Q80,32 160,54 L160,64 L0,64 Z" fill="currentColor"/>
+</svg>

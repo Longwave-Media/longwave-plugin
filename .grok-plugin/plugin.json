@@ -1,0 +1,21 @@
+{
+  "name": "longwave",
+  "version": "1.0.0",
+  "description": "Turn long-form episodes into YouTube Shorts and publish them to the creator's own channel through Longwave's existing authorized connection — instead of downloading video or clicking YouTube Studio.",
+  "author": {
+    "name": "Signal Group Limited",
+    "url": "https://www.longwave.media"
+  },
+  "homepage": "https://www.longwave.media",
+  "repository": "https://github.com/Longwave-Media/longwave-grok-plugin",
+  "license": "MIT",
+  "keywords": [
+    "longwave",
+    "youtube shorts",
+    "shorts from podcast",
+    "shorts from long video",
+    "publish to youtube",
+    "clip long video"
+  ],
+  "logo": "assets/logo.svg"
+}

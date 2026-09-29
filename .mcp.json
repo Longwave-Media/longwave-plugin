@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "longwave": {
+      "type": "http",
+      "url": "https://www.longwave.media/api/mcp"
+    }
+  }
+}
