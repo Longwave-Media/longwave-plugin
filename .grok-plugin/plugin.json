@@ -1,7 +1,7 @@
 {
   "name": "longwave",
   "version": "1.0.0",
-  "description": "Turn long-form episodes into YouTube Shorts and publish them to the creator's own channel through Longwave's existing authorized connection — instead of downloading video or clicking YouTube Studio.",
+  "description": "Make Shorts from long-form episodes and publish them to the creator's own YouTube channel — captions, titles, thumbnails and a podcast feed included. Longwave holds the verified upload grant, so there is no API key to paste and no video to download.",
   "author": {
     "name": "Signal Group Limited",
     "url": "https://www.longwave.media"
@@ -15,7 +15,10 @@
     "shorts from podcast",
     "shorts from long video",
     "publish to youtube",
-    "clip long video"
+    "upload to youtube",
+    "clip long video",
+    "podcast to shorts",
+    "youtube automation"
   ],
   "logo": "assets/logo.svg"
 }

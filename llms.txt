@@ -1,0 +1,55 @@
+# Longwave
+
+> Longwave is a hosted video pipeline for AI agents. It turns a creator's long-form episodes into
+> YouTube Shorts, generates the thumbnails and metadata, syndicates the audio as a podcast feed, and
+> publishes to the creator's own YouTube channel through a verified upload grant. Agents connect over
+> MCP with OAuth 2.1. There is no API key, and the agent never downloads video, holds Google
+> credentials, or drives YouTube Studio.
+
+Longwave is a product of Signal Group Limited (New Zealand). The company is not a party to any
+third-party platform's terms and never contacts those platforms; it produces files and publishes
+through official APIs.
+
+## Connect
+
+- [MCP endpoint](https://www.longwave.media/api/mcp): Streamable HTTP, stateless. Call it with no
+  credential and it answers `401` with a `WWW-Authenticate` challenge.
+- [Protected-resource metadata](https://www.longwave.media/.well-known/oauth-protected-resource):
+  RFC 9728 discovery document.
+- [Authorization server metadata](https://www.longwave.media/.well-known/oauth-authorization-server):
+  RFC 8414. Supports authorization code + PKCE S256 and rotating refresh tokens, with RFC 7591
+  dynamic client registration.
+- [Plugin repository](https://github.com/Longwave-Media/longwave-grok-plugin): the distribution
+  package. Install with `grok plugin install Longwave-Media/longwave-grok-plugin`.
+
+## Tools
+
+Fifteen tools in three grant tiers. A fresh connection receives read access and the ability to create
+jobs; publishing to a live channel and changing a published thumbnail are separate approvals.
+
+- Create and inspect: `account_status`, `create_shorts_job`, `get_job`, `list_clips`,
+  `create_supercut`
+- Read: `list_episodes`, `get_episode`, `get_insights`, `get_content_intelligence`,
+  `get_channel_overview`, `list_playlists`, `list_thumbnail_styles`
+- Change something public: `publish_shorts`, `reschedule_post`, `approve_thumbnail`
+
+`tools/list` is authoritative and returns each tool's full JSON Schema.
+
+## Cost
+
+Credits are charged per Short that actually publishes. A failed render costs nothing. New accounts
+receive 200 free credits that do not expire. An agent can never spend money — it holds no card, and a
+low balance returns a top-up link for the creator.
+
+- [Pricing](https://www.longwave.media/pricing)
+
+## Legal and trust
+
+- [Terms](https://www.longwave.media/terms)
+- [Privacy](https://www.longwave.media/privacy)
+- [Security policy](https://github.com/Longwave-Media/longwave-grok-plugin/blob/main/SECURITY.md)
+
+## Optional
+
+- [Organization profile](https://github.com/Longwave-Media)
+- [Website](https://www.longwave.media)
