@@ -36,4 +36,4 @@ First release.
   is not an agent-reachable path.
 - The tool catalogue is deliberately **not** scope-filtered — see `SECURITY.md` for why.
 
-[1.0.0]: https://github.com/Longwave-Media/longwave-grok-plugin/releases/tag/v1.0.0
+[1.0.0]: https://github.com/Longwave-Media/longwave-plugin/releases/tag/v1.0.0

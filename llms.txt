@@ -19,8 +19,8 @@ through official APIs.
 - [Authorization server metadata](https://www.longwave.media/.well-known/oauth-authorization-server):
   RFC 8414. Supports authorization code + PKCE S256 and rotating refresh tokens, with RFC 7591
   dynamic client registration.
-- [Plugin repository](https://github.com/Longwave-Media/longwave-grok-plugin): the distribution
-  package. Install with `grok plugin install Longwave-Media/longwave-grok-plugin`.
+- [Plugin repository](https://github.com/Longwave-Media/longwave-plugin): the distribution
+  package. Install with `grok plugin install Longwave-Media/longwave-plugin`.
 
 ## Tools
 
@@ -47,7 +47,7 @@ low balance returns a top-up link for the creator.
 
 - [Terms](https://www.longwave.media/terms)
 - [Privacy](https://www.longwave.media/privacy)
-- [Security policy](https://github.com/Longwave-Media/longwave-grok-plugin/blob/main/SECURITY.md)
+- [Security policy](https://github.com/Longwave-Media/longwave-plugin/blob/main/SECURITY.md)
 
 ## Optional
 

@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 Email **support@longwave.media** with `SECURITY` in the subject. If you would rather not use email,
-open a [private security advisory](https://github.com/Longwave-Media/longwave-grok-plugin/security/advisories/new)
+open a [private security advisory](https://github.com/Longwave-Media/longwave-plugin/security/advisories/new)
 on this repository.
 
 Please include what you did, what you expected, and what happened — a reproduction is worth more than

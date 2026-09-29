@@ -32,13 +32,13 @@ exposed as fifteen tools.
 ## Install
 
 ```
-grok plugin install Longwave-Media/longwave-grok-plugin
+grok plugin install Longwave-Media/longwave-plugin
 ```
 
 Or add it as a self-hosted catalog source:
 
 ```
-grok plugin marketplace add Longwave-Media/longwave-grok-plugin
+grok plugin marketplace add Longwave-Media/longwave-plugin
 ```
 
 Both work with **no review**. Cursor and Claude Code read the same files; Muse builds its own MCP
@@ -167,7 +167,7 @@ cloning, so a force-push cannot silently ship new code. xAI also expects the sou
 **organisation** repository; ours is `Longwave-Media`.
 
 ```bash
-git ls-remote https://github.com/Longwave-Media/longwave-grok-plugin.git HEAD
+git ls-remote https://github.com/Longwave-Media/longwave-plugin.git HEAD
 ```
 
 Then add the entry, regenerate the component index, validate, and open a PR:

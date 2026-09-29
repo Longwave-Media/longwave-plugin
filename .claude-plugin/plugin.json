@@ -1,8 +1,7 @@
 {
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "longwave",
-  "version": "1.0.0",
-  "description": "Turn long-form episodes into captioned YouTube Shorts, generate the thumbnails and titles, syndicate the audio as a podcast feed, and publish to the creator's own channel through Longwave's verified YouTube connection — no video downloads, no API key, no YouTube Studio.",
+  "displayName": "Longwave",
+  "description": "Turn long-form episodes into captioned YouTube Shorts, generate the thumbnails, syndicate a podcast feed, and publish to the creator's own channel through Longwave's verified YouTube connection. No video downloads, no API key, no YouTube Studio.",
   "author": {
     "name": "Signal Group Limited",
     "url": "https://www.longwave.media"

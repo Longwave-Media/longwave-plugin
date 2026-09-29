@@ -1,0 +1,28 @@
+{
+  "name": "longwave",
+  "description": "Longwave \u2014 the video pipeline for AI agents: Shorts, thumbnails and publishing for creator channels.",
+  "owner": {
+    "name": "Signal Group Limited"
+  },
+  "plugins": [
+    {
+      "name": "longwave",
+      "source": "./",
+      "displayName": "Longwave",
+      "description": "Turn long-form episodes into captioned YouTube Shorts and publish them to the creator's own channel — thumbnails, titles, show notes and a podcast feed included. No API key, no video downloads, no YouTube Studio.",
+      "homepage": "https://www.longwave.media",
+      "repository": "https://github.com/Longwave-Media/longwave-plugin",
+      "license": "MIT",
+      "keywords": [
+        "longwave",
+        "youtube shorts",
+        "shorts from podcast",
+        "shorts from long video",
+        "publish to youtube",
+        "upload to youtube",
+        "clip long video",
+        "podcast to shorts"
+      ]
+    }
+  ]
+}
