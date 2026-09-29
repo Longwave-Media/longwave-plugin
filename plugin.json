@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "longwave",
+  "version": "1.0.0",
+  "description": "Turn long-form episodes into Shorts and publish them to the creator's own YouTube channel through Longwave, using the creator's existing authorized connection instead of downloading video or clicking YouTube Studio.",
+  "author": {
+    "name": "Signal Group Limited",
+    "url": "https://www.longwave.media"
+  },
+  "homepage": "https://www.longwave.media",
+  "repository": "https://github.com/Longwave-Media/longwave-grok-plugin",
+  "license": "MIT",
+  "keywords": [
+    "longwave",
+    "youtube shorts",
+    "shorts from podcast",
+    "shorts from long video",
+    "publish to youtube",
+    "clip long video"
+  ]
+}

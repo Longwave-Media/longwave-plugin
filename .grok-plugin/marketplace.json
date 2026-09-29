@@ -1,0 +1,29 @@
+{
+  "name": "longwave",
+  "description": "Longwave \u2014 publish Shorts cut from long-form episodes",
+  "owner": {
+    "name": "Signal Group Limited"
+  },
+  "plugins": [
+    {
+      "name": "longwave",
+      "description": "Turn long-form episodes into Shorts and publish them to the creator's own YouTube channel through their existing authorized connection.",
+      "category": "productivity",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Longwave-Media/longwave-grok-plugin.git"
+      },
+      "homepage": "https://github.com/Longwave-Media/longwave-grok-plugin",
+      "keywords": [
+        "longwave",
+        "youtube shorts",
+        "shorts from podcast",
+        "publish to youtube"
+      ],
+      "domains": [
+        "longwave.media",
+        "www.longwave.media"
+      ]
+    }
+  ]
+}
