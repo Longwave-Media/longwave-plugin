@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "media.longwave/longwave",
+  "title": "Longwave",
+  "description": "Turn a creator's long-form episodes into YouTube Shorts, generate the thumbnails and metadata, syndicate the audio as a podcast feed, and publish to the creator's own YouTube channel through Longwave's verified upload grant. Agents orchestrate; Longwave renders and publishes — no video downloads, no API key, no YouTube Studio.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.longwave.media",
+  "repository": {
+    "url": "https://github.com/Longwave-Media/longwave-plugin",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.longwave.media/api/mcp"
+    }
+  ]
+}
