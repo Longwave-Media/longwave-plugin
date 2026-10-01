@@ -179,6 +179,20 @@ python3 scripts/validate-catalog.py
 
 **Re-pin `sha` on every release** — never open a parallel entry.
 
+### Submitting to the Cursor Marketplace (this is Grok Bot's plugin catalog)
+
+Grok Bot installs its plugins — **Settings → Plugins** — from the **Cursor Marketplace**, which is a
+different surface from Grok Build's catalog above. Submission is a form, not a pull request: paste
+this repository's URL at <https://cursor.com/marketplace/publish>. The Cursor team manually reviews a
+new listing **and every update**, so there is no SHA pin to maintain — the listing tracks the default
+branch.
+
+This package is already in the format Cursor accepts: a root `plugin.json` per the Agent Plugins
+specification, with `mcp.json`, `skills/` and `README.md` alongside it. `keywords` and the
+`description` are what a marketplace search matches, which is why the manifest carries the plain
+words a creator would type — `youtube`, `shorts`, `reels`, `video`, `clips`, `podcast` — and not just
+the product vocabulary.
+
 ## Privacy and data
 
 This package collects nothing and stores nothing. Anything the creator acts on is handled by the
