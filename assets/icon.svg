@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Longwave">
+  <rect width="1024" height="1024" fill="#0E1B2C"/>
+  <path d="M0,576 Q512,192 1024,576 L1024,1024 L0,1024 Z" fill="#F4F1EA" opacity="0.35"/>
+  <path d="M0,800 Q512,480 1024,800 L1024,1024 L0,1024 Z" fill="#F4F1EA"/>
+</svg>
