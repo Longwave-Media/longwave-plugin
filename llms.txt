@@ -1,14 +1,27 @@
 # Longwave
 
-> Longwave is a hosted video pipeline for AI agents. It turns a creator's long-form episodes into
-> YouTube Shorts, generates the thumbnails and metadata, syndicates the audio as a podcast feed, and
-> publishes to the creator's own YouTube channel through a verified upload grant. Agents connect over
-> MCP with OAuth 2.1. There is no API key, and the agent never downloads video, holds Google
-> credentials, or drives YouTube Studio.
+> Longwave is a hosted video pipeline for AI agents. Point it at one long-form episode, podcast or
+> YouTube video and a whole distribution stack comes back: captioned vertical Shorts and clips;
+> contextual AI thumbnails generated from the transcript; transcript-based titles, descriptions,
+> chapters, show notes and per-platform post copy; an X post plus an X video supercut; a podcast RSS
+> feed syndicated to 13 directories; and a public link-in-bio hub. YouTube and X publish
+> automatically, and every other clip is a captioned vertical file ready for Reels, TikTok and
+> LinkedIn. Agents connect over MCP with OAuth 2.1. There is no API key, and the agent never downloads
+> video, holds Google credentials, or drives YouTube Studio.
 
 Longwave is a product of Signal Group Limited (New Zealand). The company is not a party to any
 third-party platform's terms and never contacts those platforms; it produces files and publishes
 through official APIs.
+
+## What it produces
+
+- Captioned vertical Shorts and clips, cut and framed from the transcript.
+- Contextual AI thumbnails — hook, subtitle and scene generated from the episode transcript.
+- Transcript-based titles, descriptions, chapters, show notes and per-platform post copy.
+- An X post and an X video supercut, as separate outputs from one episode.
+- A podcast RSS feed, syndicated to 13 directories (Apple Podcasts, Spotify, Amazon Music,
+  iHeartRadio and more).
+- A public link-in-bio hub for the creator's channel.
 
 ## Connect
 

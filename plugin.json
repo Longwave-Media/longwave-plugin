@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "longwave",
   "version": "1.0.0",
-  "description": "Turn long-form episodes into captioned YouTube Shorts, generate the thumbnails and titles, syndicate the audio as a podcast feed, and publish to the creator's own channel through Longwave's verified YouTube connection — no video downloads, no API key, no YouTube Studio.",
+  "description": "Longwave is the video pipeline an agent plugs into. Point it at a long-form episode, podcast or YouTube video and one recording becomes a whole distribution stack: captioned vertical Shorts and clips, contextual AI thumbnails generated from the transcript, and transcript-based titles, descriptions, chapters, show notes and per-platform post copy. It builds and syndicates a podcast RSS feed to 13 directories, publishes an X post plus an X video supercut, and ships a public link-in-bio hub. YouTube and X publish automatically; every other clip is a captioned vertical file ready for Reels, TikTok and LinkedIn. One MCP connection — OAuth 2.1, 15 tools, no API key pasted, no video downloads, no YouTube Studio. Built by Signal Group Limited (New Zealand) — longwave.media.",
   "author": {
     "name": "Signal Group Limited",
     "url": "https://www.longwave.media"

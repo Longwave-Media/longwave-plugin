@@ -9,6 +9,26 @@ and no API key anywhere.
 **Agents orchestrate. Longwave renders and publishes.** The agent never downloads video, never holds
 Google credentials, and never drives YouTube Studio.
 
+## What it produces
+
+Point Longwave at one long-form episode, podcast or YouTube video and a whole distribution stack
+comes back:
+
+- **Captioned vertical Shorts and clips** — cut, framed and captioned from the transcript.
+- **Contextual AI thumbnails** — the hook, the subtitle and the scene are generated from the
+  episode's own transcript, not grabbed from a frame.
+- **Transcript-based metadata** — titles, descriptions, chapters, show notes and per-platform post
+  copy, written for each destination.
+- **An X post and an X video supercut** — the link post and the native video clip are separate
+  outputs, and both can run from the same episode.
+- **A podcast RSS feed**, built and syndicated to 13 directories — Apple Podcasts, Spotify, Amazon
+  Music, iHeartRadio, Pocket Casts, Castbox and more.
+- **A public link-in-bio hub** for the creator's channel.
+
+**YouTube and X publish automatically.** Every other clip is rendered as a captioned vertical file
+ready to drop into Reels, TikTok and LinkedIn. Longwave is not a party to those platforms' terms and
+never contacts them; the creator's own agent performs that step from the creator's session.
+
 ---
 
 ## Why this exists
