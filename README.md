@@ -150,6 +150,7 @@ plugin with **zero tools**. Both layouts are therefore shipped:
 | `skills/longwave/SKILL.md` | Shared by both — the instructions the model reads |
 | `.grok-plugin/marketplace.json` | Self-hosted catalog (tracks repo HEAD) |
 | `assets/logo.svg` | Listing logo — the Groundswell mark, monochrome `currentColor` per brand canon |
+| `assets/icon.svg` | 1:1 marketplace logotype — Groundswell on the ink plate, full-bleed 1024. This is the one a listing tile wants, because a monochrome mark with no plate disappears on a light or busy background |
 
 ## Who maintains this
 
